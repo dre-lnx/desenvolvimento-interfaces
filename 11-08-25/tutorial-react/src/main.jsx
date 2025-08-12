@@ -8,6 +8,6 @@ import App from './App.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Saudacao name="André" idade = '22 Anos'/>
-    <SaudacaoClasse name="André" age = '22 Years' isLogado = {true} />
+    <SaudacaoClasse name="André" age = '22 Years' />
   </StrictMode>,
 )
