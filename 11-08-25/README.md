@@ -8,6 +8,8 @@
 
 ``npm create vite@latest``
 
+``npm create vite@latest {project-name} -- --template react``
+
 ``npm install``
 
 ``npm run dev``
