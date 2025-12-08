@@ -1,39 +1,36 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-
+import { useState } from "react";
+// Lista de produtos
+const produtos = [
+  "Notebook",
+  "Celular",
+  "Tablet",
+  "Teclado",
+  "Mouse",
+  "Monitor",
+  "Impressora",
+];
+// Componente que exibe a lista filtrada de produtos
 function App() {
-  const [jogador, setJogador] = useState({
-    nome: 'Carlos',
-    nivel: 0,
-    pontuacao: 0
+  const [busca, setBusca] = useState("");
+  // Função de filtragem é recalculada em toda renderização
+  const produtosFiltrados = produtos.filter((produto) => {
+    console.log("Filtrando produtos...");
+    return produto.toLowerCase().includes(busca.toLowerCase());
   });
-
-  const aumentarPontuacao = () => {
-    setJogador({
-      ...jogador,
-      pontuacao: jogador.pontuacao += 10
-    })
-  }
-
-  const subirNivel = () => {
-    setJogador({
-      ...jogador,
-      nivel: jogador.nivel += 1
-    })
-  }
-
-  useEffect(() => {console.log(jogador)}, [jogador])
-
   return (
     <div>
-      <h1>Perfil do Jogador</h1>
-      <p>Nome: {jogador.nome}</p>
-      <p>Nível: {jogador.nivel}</p>
-      <p>Pontuação: {jogador.pontuacao}</p>
-    <button onClick={aumentarPontuacao}>Aumentar Pontuação</button>
-    <button onClick={subirNivel}>Subir de Nível</button>
+      <input
+        type="text"
+        placeholder="Buscar produtos"
+        value={busca}
+        onChange={(e) => setBusca(e.target.value)}
+      />
+      <ul>
+        {produtosFiltrados.map((produto, index) => (
+          <li key={index}>{produto}</li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }
-
-export default App
+export default App;
